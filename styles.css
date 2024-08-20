@@ -78,10 +78,28 @@ font-family: "Roboto", sans-serif;
     transition: all 0.7s ease-in-out; /* Transición suave */
 }
 
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 h2 {
+    white-space: nowrap;
     margin-bottom: 70px;
     font-weight: 600;
     font-size: 60px;
+    transition: all .3s ease-in-out;
+}
+
+.btn {
+    font-size: 20px;
+    background-color: transparent;
+    border: solid 2px white;
+    padding: 10px 70px;
+    color: white;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
 }
 
 .split.left {
@@ -100,6 +118,7 @@ h2 {
 .split.left .content {
     position: relative; /* Mantiene el contenido en el frente */
     z-index: 2; /* Asegura que el contenido esté por encima del fondo */
+    transition: font-size 0.5s ease;
 }
 
 .split.left .btn:hover {
@@ -120,16 +139,10 @@ h2 {
     z-index: 1; /* Coloca el fondo por debajo del contenido */
 }
 
-.content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 .split.right .content {
     position: relative; /* Mantiene el contenido en el frente */
     z-index: 2; /* Asegura que el contenido esté por encima del fondo */
+    transition: font-size 0.5s ease;
 }
 
 .split.right .btn:hover {
@@ -147,14 +160,23 @@ h2 {
     flex-grow: 7;
 }
 
-.btn {
-    font-size: 20px;
-    background-color: transparent;
-    border: solid 2px white;
-    padding: 10px 70px;
-    color: white;
-    cursor: pointer;
-    transition: all .3s ease-in-out;
+@media (max-width: 800px) {
+    h2 {
+        font-size:30px
+    }
+    .btn {
+        font-size: 15px;
+        padding: 5px 50px;
+    }
 }
 
+.split.left.hover-change .content h2,
+.split.right.hover-change .content h2 {
+    font-size: 80px; /* Tamaño de fuente cuando se expande el contenedor */
+}
+
+.split.left.hover-change .content .btn,
+.split.right.hover-change .content .btn {
+    font-size: 25px; /* Ajusta el tamaño del botón si es necesario */
+}
 
