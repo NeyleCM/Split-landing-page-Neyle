@@ -66,34 +66,85 @@ font-family: "Roboto", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
     flex-direction: column;
+    position: relative;
+    gap: 10%;
+    overflow: hidden;
     height: 100%;
-    width: 50%;
+    flex-grow: 1; /* Cada contenedor inicialmente ocupa el mismo espacio 
+    le había dado width: 50%, pero se ve mejor*/
     background-size: cover;
     background-position: center;
+    transition: all 0.7s ease-in-out; /* Transición suave */
 }
 
 h2 {
+    margin-bottom: 70px;
     font-weight: 600;
     font-size: 60px;
 }
+
 .split.left {
     background: url('./img/ps.jpg') no-repeat center center / cover;
+}
+
+.split.left::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background-color: rgba(58, 57, 167, 0.7);
+    z-index: 1; /* Coloca el fondo por debajo del contenido */
+} 
+
+.split.left .content {
+    position: relative; /* Mantiene el contenido en el frente */
+    z-index: 2; /* Asegura que el contenido esté por encima del fondo */
 }
 
 .split.left .btn:hover {
     background-color: rgb(87 84 236);
     border-color: rgb(87 84 236);
 }
+
 .split.right {
     background: url('./img/xbox.jpg') no-repeat center center / cover;
+}
+
+.split.right::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(43, 43, 43, .8);
+    z-index: 1; /* Coloca el fondo por debajo del contenido */
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.split.right .content {
+    position: relative; /* Mantiene el contenido en el frente */
+    z-index: 2; /* Asegura que el contenido esté por encima del fondo */
 }
 
 .split.right .btn:hover {
     background-color: rgb(26 122 28);
     border-color: rgb(26 122 28);
+}
+
+.split.left.hover-change {
+   /*Había puesto width:70% para que crezca al pasar sobre el, pero al utilizar
+   el flex-grow: 1 en el padre, .split, se ve mejor*/
+    flex-grow: 7;
+}
+
+.split.right.hover-change { 
+    flex-grow: 7;
 }
 
 .btn {
@@ -103,6 +154,7 @@ h2 {
     padding: 10px 70px;
     color: white;
     cursor: pointer;
+    transition: all .3s ease-in-out;
 }
 
 
